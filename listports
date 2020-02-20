@@ -1,0 +1,61 @@
+// Program: Port lister
+// Programmer: Pasi Rautiainen 2018 (updated 2020)
+
+#include <stdio.h>
+#include <stddef.h>
+#include <time.h>
+#include <io.h>
+int main() {
+	int msec = 0;
+	int maxtimer = 5000;
+	clock_t tm = clock();
+	clock_t end = clock();
+	int s = 0;
+	int p = 0;
+	int sek = 0;
+	int n = 0;
+	FILE *fd = 1;
+	FILE *fc = 1;
+	char* buf = "";
+	while (fd > 0)
+	{
+		fd = fopen("USB"+n, "wb");
+		if (fd > 0) {
+			printf("USB:%d %d ", n, fd);
+		}
+		n++;
+	}
+	printf("\n");
+	printf("",buf);
+	printf("\n");
+	n = 0;
+	while (fc > 0)
+	{
+		fc = fopen("COM"+n , "wb");
+		if (fc > 0)
+			printf("COM:%d %d ",n, fc);
+		else
+			printf("\nCOM:%d - port not found\n",n);
+		n++;
+	}
+	
+	//Second worker
+	while (end < maxtimer) {
+		
+		if (end == 1000 || end == 2000 || end == 3000 || end == 4000 || end == 5000) {
+			sek++; p++;
+			s = sek / 2;
+			if (p/2 == s) {
+				printf("%d\n", s);
+			}
+		}
+		end = clock();
+	} 
+	printf("Seconds past: %d s\n", end/1000);
+	int i = 1;
+	for (i; i < end / 1000+1; i++) {
+		printf("%d.Hello Bubby\n",i);
+	}
+	//fcloce(fd); //be sure if need to close
+	return 0;
+}
