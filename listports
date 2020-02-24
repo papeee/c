@@ -38,8 +38,17 @@ int main() {
 			printf("\nCOM:%d - port not found\n",n);
 		n++;
 	}
+		end = clock();
+	printf("Past time: %d ms\n", end);
+	int i = 1;
+	for (i; i < end / 10; i++) {
+		// Times depends from past time
+		printf("%d.Hello Bubby\n",i);
+	}
 	
-	//Second worker
+//Second worker
+	clock_t tm = clock();
+	clock_t end = clock();
 	while (end < maxtimer) {
 		
 		if (end == 1000 || end == 2000 || end == 3000 || end == 4000 || end == 5000) {
@@ -51,11 +60,6 @@ int main() {
 		}
 		end = clock();
 	} 
-	printf("Seconds past: %d s\n", end/1000);
-	int i = 1;
-	for (i; i < end / 1000+1; i++) {
-		printf("%d.Hello Bubby\n",i);
-	}
 	//fcloce(fd); //be sure if need to close
 	return 0;
 }
